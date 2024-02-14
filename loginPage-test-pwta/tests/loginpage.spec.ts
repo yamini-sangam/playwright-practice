@@ -1,21 +1,20 @@
 import { test, expect } from '@playwright/test';
+import { PageModel } from '../pages/loginPage.ts';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('https://www.saucedemo.com/');
-  await page.fill('#user-name', 'standard_user');
-  await page.fill('#password', 'secret_sauce');
-  await page.click('#login-button');
+  await PageModel.login(page);
 });
 
 test.afterEach(async ({ page }) => {
-  await page.click('#react-burger-menu-btn');
-  await page.click('#logout_sidebar_link');
+  await PageModel.logout(page);
 });
 
 test('has title', async ({ page }) => {
   // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Swag Labs/);
+  await expect(PageModel.getPageTitle(page)).resolves.toMatch(/Swag Labs/);
 
   // Assert the secondary title "Products"
-  await expect(await page.textContent('.header_secondary_container .title')).toBe('Products');
+  await expect(PageModel.getSecondaryTitleText(page)).resolves.toBe('Products');
 });
+
+// Add more tests if needed
