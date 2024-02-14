@@ -1,20 +1,16 @@
 import { test, expect } from '@playwright/test';
-import { PageModel } from '../pages/loginPage.ts';
+import { LoginPage } from '../pages/loginPage';
 
-test.beforeEach(async ({ page }) => {
-  await PageModel.login(page);
+test('valid login', async ({ page }) => {
+    await LoginPage.login(page, 'standard_user', 'secret_sauce');
+    await expect(page.title()).resolves.toMatch(/Swag Labs/);
+    await expect(page.textContent('.header_secondary_container .title')).resolves.toBe('Products');
 });
 
-test.afterEach(async ({ page }) => {
-  await PageModel.logout(page);
-});
 
-test('has title', async ({ page }) => {
-  // Expect a title "to contain" a substring.
-  await expect(PageModel.getPageTitle(page)).resolves.toMatch(/Swag Labs/);
-
-  // Assert the secondary title "Products"
-  await expect(PageModel.getSecondaryTitleText(page)).resolves.toBe('Products');
-});
-
-// Add more tests if needed
+test('invalid login', async ({ page }) => {
+    await LoginPage.login(page, 'standard_use', 'secret_sauce');
+    const errorMessage = await LoginPage.getErrorMessage(page);
+    expect(errorMessage).toMatch(/Username and password do not match any user in this service/);
+   
+  });
