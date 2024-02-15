@@ -1,4 +1,4 @@
-export const PageModel = {
+export const titleCheck = {
   async login(page, username, password) {
     await page.goto('https://www.saucedemo.com/');
     await page.fill('#user-name', username);

@@ -1,0 +1,24 @@
+{
+  "name": "reg-api-test-pwta",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test ./tests/register-sepc.ts",
+    "show-report": "npx playwright show-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.41.2",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.18",
+    "@types/node-fetch": "^2.6.11",
+    "esm": "^3.2.25"
+  },
+  "dependencies": {
+    "axios": "^1.6.7",
+    "node-fetch": "^3.3.2"
+  }
+}
