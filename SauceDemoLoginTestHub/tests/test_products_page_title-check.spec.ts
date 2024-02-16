@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { titleCheck } from '../pages/titleCheck.ts';
+import { titleCheck } from '../pages/ProductPage.ts';
 
 test.beforeEach(async ({ page }) => {
     await titleCheck.login(page, 'standard_user', 'secret_sauce');
