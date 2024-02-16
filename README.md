@@ -25,3 +25,4 @@ Which contains all the dependencies required to build/run the playwright applica
 It is used to configure the some settings to the test like browser
 
 ### 6.What is the use of record in playwright while testing webapp?
+The Codegen Record option in Playwright allows you to record user interactions with a web page and generate corresponding Playwright code. This is particularly useful for beginners who are unfamiliar with the Playwright API or for quickly prototyping automation scripts.
